@@ -42,6 +42,7 @@ jobs:
         run: |
           mkdir -p "$HOME/.appstoreconnect/private_keys"
           mkdir -p "$HOME/private_keys"
+          mkdir -p "$HOME/.private_keys"
           TARGET_KEY="$HOME/.appstoreconnect/private_keys/AuthKey_9HC3ZFHYQ7.p8"
           printf "%s\n" "-----BEGIN PRIVATE KEY-----" > "$TARGET_KEY"
           printf "%s\n" "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQggirxemIOJ0dlsLBJ" >> "$TARGET_KEY"
@@ -50,6 +51,7 @@ jobs:
           printf "%s\n" "xMlFxhoE" >> "$TARGET_KEY"
           printf "%s\n" "-----END PRIVATE KEY-----" >> "$TARGET_KEY"
           cp "$TARGET_KEY" "$HOME/private_keys/AuthKey_9HC3ZFHYQ7.p8"
+          cp "$TARGET_KEY" "$HOME/.private_keys/AuthKey_9HC3ZFHYQ7.p8"
 
           python3 -m pip install --break-system-packages pyjwt cryptography requests --quiet || true
           python3 - << 'EOF'
@@ -111,8 +113,8 @@ jobs:
       - name: Build Unsigned IPA Archive via Flutter
         run: |
           BUILD_NUM=$((10 + GITHUB_RUN_NUMBER))
-          echo "Building iOS archive with dynamic build number: $BUILD_NUM"
-          flutter build ipa --release --no-codesign --no-tree-shake-icons --build-number=$BUILD_NUM
+          echo "Building iOS archive with version 1.0 and build number: $BUILD_NUM"
+          flutter build ipa --release --no-codesign --no-tree-shake-icons --build-name=1.0 --build-number=$BUILD_NUM
 
       - name: Export Signed IPA via App Store Connect API Key
         run: |
