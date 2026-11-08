@@ -1,0 +1,56 @@
+name: scannify
+description: "Scannify — AI Receipt Scanner & Smart Expense Tracker (Android, iOS, Web, Zero Backend)."
+publish_to: 'none'
+version: 1.0.2+3
+
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.41.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management & Architecture
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  # Cross-Platform Local Database (Android, iOS, Web IndexedDB)
+  hive_ce: ^2.10.1
+  hive_ce_flutter: ^2.2.0
+
+  # OCR & Image Acquisition (Mobile native ML Kit isolated via conditional imports)
+  google_mlkit_text_recognition: ^0.15.0
+  image_picker: ^1.1.2
+  image_cropper: ^9.1.0
+
+  # Local Storage & Preferences
+  shared_preferences: ^2.5.2
+
+  # Document Export & Native Sharing
+  pdf: ^3.11.3
+  image: ">=4.2.0 <4.6.0"
+  csv: ^6.0.0
+  share_plus: ^10.1.4
+  path_provider: ^2.1.5
+  cross_file: ^0.3.4+2
+  web: ^1.1.1
+
+  # Utilities, Formatting & Typography
+  intl: ^0.20.2
+  uuid: ^4.5.1
+  collection: ^1.19.1
+  meta: ^1.16.0
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/

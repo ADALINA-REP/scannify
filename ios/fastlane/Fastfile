@@ -1,0 +1,15 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight / App Store Connect"
+  lane :beta do
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store"
+    )
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
